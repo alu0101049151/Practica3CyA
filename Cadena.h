@@ -29,6 +29,8 @@
 
 class Cadena
 {
+	friend std::ostream& operator<<(std::ostream& os, const Cadena& cadena);
+	
 	public:
 		Cadena(std::string& cadena);
 		Cadena();
@@ -37,7 +39,7 @@ class Cadena
 
 		std::string getCadena() const;
 	  void setCadena(std::string set);
-
+	
 		Cadena& operator=(const Cadena& cadena);
 		int operator==(const Cadena& cadena) const;
 		int operator<(const Cadena& cadena) const;

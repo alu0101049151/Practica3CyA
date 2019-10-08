@@ -40,7 +40,7 @@ Cadena::~Cadena(){}
 
 //========Getters & Setters===================
 
-td::string Cadena::getCadena () const
+std::string Cadena::getCadena () const
 {
 	return cadena_;
 }
@@ -76,3 +76,9 @@ int Cadena::operator< (const Cadena& cadena) const
   return 0;	
 }
 
+
+std::ostream& operator<<(std::ostream& os, const Cadena& cadena)
+{
+	os << cadena.cadena_ << std::endl;
+	return os;
+}

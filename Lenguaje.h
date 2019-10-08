@@ -44,33 +44,38 @@ const std::string VACIO = "{}";
 class Lenguaje
 {
 	public:
-
 		//Constructor de la clase. Se le pasa el string leído del fichero con los
 		//lenguajes
 		Lenguaje (std::string& lenguaje);
 
 		Lenguaje (const Lenguaje& L);
+		
+		Lenguaje ();
 
 		~Lenguaje ();
 
 		std::set<Cadena>	getLenguaje () const;
 		
 		//SET_LENGUAJE(?????)
+	  Lenguaje& operator= (const Lenguaje& lenguaje);
 
 	protected:
+	   //Extrae las cadenas del string leído y las inserta en el set de cadenas
+	   //(lenguaje) 
+	   void fillLenguaje (std::string& lenguaje);
 
-	//Extrae las cadenas del string leído y las inserta en el set de cadenas
-	//(lenguaje) 
-	void fillLenguaje (std::string& lenguaje);
 
-	//Limpia el token eliminando '}' '{' ',' y deja solo la palabra para crear el
-	//objeto cadena a introducir en el lenguaje.
-	//En caso de que sea el lenguaje vacío, se creará una cadena que contenga
-	//solamente '{}' y será la única cadena del lenguaje.
-	std::string tratamiento (std::string& token);
+	   //Limpia el token eliminando '}' '{' ',' y deja solo la palabra para crear el
+	   //objeto cadena a introducir en el lenguaje.
+	   //En caso de que sea el lenguaje vacío, se creará una cadena que contenga
+	   //solamente '{}' y será la única cadena del lenguaje.
+	   std::string tratamiento (std::string& token);
+
+
+ 	   void writeLenguaje(std::ostream& os) const;
 		
 	private:
-		std::set<Cadena> lenguaje_;
+		  std::set<Cadena> lenguaje_;
 
 };
 

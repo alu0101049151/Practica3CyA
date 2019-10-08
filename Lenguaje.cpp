@@ -36,6 +36,9 @@ Lenguaje::Lenguaje (const Lenguaje& lenguaje):
 	lenguaje_(lenguaje.lenguaje_){}
 
 
+Lenguaje::Lenguaje() {}
+
+
 
 Lenguaje::~Lenguaje (){}
 
@@ -48,6 +51,8 @@ std::set<Cadena>	Lenguaje::getLenguaje () const
 
 
 
+//Extrae las cadenas del string leído y las inserta en el set de cadenas
+//(lenguaje)
 void Lenguaje::fillLenguaje (std::string& lenguaje)
 {
 	std::string token; //Token leído del string que contiene el lenguaje leído del fichero.
@@ -56,29 +61,48 @@ void Lenguaje::fillLenguaje (std::string& lenguaje)
 
 	for (int i = 0; i < lenguaje.size(); ++i) {
 		iss >> token;
+		std::cout << "Token de fillLenguaje " << token << "\n";
 		if (!token.empty()) {
 			to_cadena = tratamiento(token);
+	std::cout << "Ha pasado tratamiento\n";
 			Cadena to_insert(to_cadena);
 			lenguaje_.insert(to_insert);
 		}
+		token.clear();
 	}
 }
 
 
+
+//Limpia el token eliminando '}' '{' ',' y deja solo la palabra para crear el
+//objeto cadena a introducir en el lenguaje.
+//En caso de que sea el lenguaje vacío, se creará una cadena que contenga
+//solamente '{}' y será la única cadena del lenguaje. 
 std::string Lenguaje::tratamiento (std::string& token)
 {
-	std::regex corchete_principio("{(\\w)+,");
-	std::regex corchete_final(",(\\w)+}");
+	std::cout << "Ha entrado en tratamiento\n";
+	std::cout << "Token en tratamiento: " << token << "\n";
+	std::regex corchete_principio("[{](\\w)+,");
+	std::regex corchete_final("(\\w)+}");
 	std::regex coma("(\\w)+,");
-	std::string to_return;
+	std::regex unitario("[{](\\W)[}]");
+	std::string to_return = "&";
+	//std::cout << "Ha pasado las instancias de las REGEX\n";
 
 	if (token == VACIO) {
+		std::cout << "Ha entrado en if (token == VACIO)\n";
 		return token;
 	}
 
-	if (std::regex_match(token, corchete_principio) || std::regex_match(token, corchete_final)) {
-		to_return = token.substr(1, token.size()-1);
-		std::cout << "To_Reteurn principio / final: " << to_return << NEWLINE;
+	if (std::regex_match(token, corchete_principio) || std::regex_match(token, unitario)) {
+		to_return = token.substr(1, token.size()-2);
+		std::cout << "To_Reteurn principio: / unitario " << to_return << NEWLINE;
+		return to_return;
+	}
+
+	if (std::regex_match(token, corchete_final)) {
+		to_return = token.substr(0, token.size()-1);
+		std::cout << "final: " << to_return << NEWLINE;
 		return to_return;
 	}
 
@@ -86,5 +110,30 @@ std::string Lenguaje::tratamiento (std::string& token)
 		to_return = token.substr(0, token.size()-1);
 		std::cout << "To_Return coma: " << to_return << NEWLINE;
 		return to_return;
+	}
+
+	return to_return;
+}
+
+
+
+Lenguaje& Lenguaje::operator= (const Lenguaje& lenguaje)
+{
+	this->lenguaje_ = lenguaje.lenguaje_;
+	return *this;
+}
+
+
+
+void Lenguaje::writeLenguaje(std::ostream& os) const
+{
+	std::set<Cadena>::iterator it = lenguaje_.begin();
+	
+	os << "{";
+	for (; it != lenguaje_.end(); ++it) {
+		if (it == lenguaje_.end())
+			os << (*it) << "}" << NEWLINE;
+		else
+		  os << (*it) << ", ";
 	}
 }
