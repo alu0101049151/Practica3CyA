@@ -8,7 +8,7 @@
  * Autor: Basilio Gómez Navarro
  * Correo: alu0101049151@ull.edu.es
  * Fecha 6/10/2019
- * Archivo cadena.h: Clase cadena. Representa una secuencia finita de símbolos
+ * Archivo Cadena.h: Clase cadena. Representa una secuencia finita de símbolos
  *                   de un determinado alfabeto. Este fichero contiene la 
  *                   definición de la clase.
  *
@@ -18,4 +18,33 @@
  *                   CYA_1920_Practica_3.pdf?forcedownload=1
  * Historial de revisiones
  *                   6/10/2019 - Creación (primera versión) del código
- * * /
+ * */
+ 
+#ifndef PRACTICA3_Cadena_H
+#define PRACTICA3_Cadena_H
+
+#include <iostream>
+#include <string>
+
+
+class Cadena
+{
+	public:
+		Cadena(std::string& cadena);
+		Cadena();
+		Cadena(const Cadena& C);
+		~Cadena();
+
+		std::string getCadena() const;
+	  void setCadena(std::string set);
+
+		Cadena& operator=(const Cadena& cadena);
+		int operator==(const Cadena& cadena) const;
+		int operator<(const Cadena& cadena) const;
+
+	private:
+		std::string cadena_;
+
+};
+
+#endif //PRACTICA3_Cadena_H
