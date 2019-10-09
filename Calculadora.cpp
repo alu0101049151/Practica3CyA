@@ -70,28 +70,48 @@ void Calculadora::ejecutarCalculadora ()
 	else {
 		std::string leido1; //Almacenará la línea leida del fichero.
 		std::string leido2; //Almacenará la segunda linea leída (en caso de ser operaciones binarias
+	  output_file.open(salida_);
 
 		while (!input_file.eof()) {
-			    output_file.open(salida_);
+					leido1.clear();
+					leido2.clear();
 					
 					std::getline(input_file, leido1);
-				  Lenguaje lenguaje1(leido1);
+			if(!leido1.empty()) {
+						Lenguaje lenguaje1(leido1);
+					
+					std::cout << "leido 1: " << leido1 << "\n";
 
 					if (codigo_ < 7) {
 					    std::getline(input_file, leido2);
-							Lenguaje enguaje2(leido2);
+					std::cout << "leido 2: " << leido2 << "\n";
+				   	if(!leido2.empty()){
+							Lenguaje lenguaje2(leido2);
 
 							switch (codigo_)
 							{
 								case 1:
-									Lenguaje resultado;
-									/*Concatenacion concatenacion(lenguaje1, lenguaje2);
-									resultado = concatenacion.concatenar();
-									resultado.write(output_file);
-									break;*/
+									{
+										Lenguaje resultado;
+										/*Concatenacion concatenacion(lenguaje1, lenguaje2);
+										resultado = concatenacion.concatenar();
+										resultado.write(output_file);*/
+										break;
+									}
+
+								case 2:
+									{
+										Lenguaje resultado;
+										Union unionLenguaje(lenguaje1, lenguaje2);
+										resultado = unionLenguaje.unir();
+										resultado.writeLenguaje(output_file);
+										break;
+									}
 									//FALTAN EL RESTO DE CASOS
 							}
+						}
 					}
+			}
 
 					else {
 						switch (codigo_)

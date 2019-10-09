@@ -61,10 +61,10 @@ void Lenguaje::fillLenguaje (std::string& lenguaje)
 
 	for (int i = 0; i < lenguaje.size(); ++i) {
 		iss >> token;
-		std::cout << "Token de fillLenguaje " << token << "\n";
+		//std::cout << "Token de fillLenguaje " << token << "\n";
 		if (!token.empty()) {
 			to_cadena = tratamiento(token);
-	std::cout << "Ha pasado tratamiento\n";
+	//std::cout << "Ha pasado tratamiento\n";
 			Cadena to_insert(to_cadena);
 			lenguaje_.insert(to_insert);
 		}
@@ -80,12 +80,12 @@ void Lenguaje::fillLenguaje (std::string& lenguaje)
 //solamente '{}' y será la única cadena del lenguaje. 
 std::string Lenguaje::tratamiento (std::string& token)
 {
-	std::cout << "Ha entrado en tratamiento\n";
+	//std::cout << "Ha entrado en tratamiento\n";
 	std::cout << "Token en tratamiento: " << token << "\n";
 	std::regex corchete_principio("[{](\\w)+,");
 	std::regex corchete_final("(\\w)+}");
 	std::regex coma("(\\w)+,");
-	std::regex unitario("[{](\\W)[}]");
+	std::regex unitario("[{][\\W \\w][}]");
 	std::string to_return = "&";
 	//std::cout << "Ha pasado las instancias de las REGEX\n";
 
@@ -131,9 +131,9 @@ void Lenguaje::writeLenguaje(std::ostream& os) const
 	
 	os << "{";
 	for (; it != lenguaje_.end(); ++it) {
-		if (it == lenguaje_.end())
+		/*if (it == lenguaje_.end())
 			os << (*it) << "}" << NEWLINE;
-		else
+		else*/
 		  os << (*it) << ", ";
 	}
 }

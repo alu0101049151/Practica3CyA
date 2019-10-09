@@ -59,6 +59,9 @@ class Lenguaje
 		//SET_LENGUAJE(?????)
 	  Lenguaje& operator= (const Lenguaje& lenguaje);
 
+
+ 	   void writeLenguaje(std::ostream& os) const;
+	
 	protected:
 	   //Extrae las cadenas del string leído y las inserta en el set de cadenas
 	   //(lenguaje) 
@@ -70,9 +73,6 @@ class Lenguaje
 	   //En caso de que sea el lenguaje vacío, se creará una cadena que contenga
 	   //solamente '{}' y será la única cadena del lenguaje.
 	   std::string tratamiento (std::string& token);
-
-
- 	   void writeLenguaje(std::ostream& os) const;
 		
 	private:
 		  std::set<Cadena> lenguaje_;

@@ -31,6 +31,7 @@
 #include <fstream>
 
 #include "Lenguaje.h"
+#include "Union.h"
 
 class Calculadora
 {
