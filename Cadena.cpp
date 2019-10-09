@@ -42,7 +42,7 @@ Cadena::~Cadena(){}
 
 std::string Cadena::getCadena () const
 {
-	return cadena_;
+	  return cadena_;
 }
 
 void Cadena::setCadena (std::string cadena)
@@ -65,7 +65,7 @@ Cadena& Cadena::operator= (const Cadena& cadena)
 int Cadena::operator== (const Cadena& cadena) const
 {
 	if (this->cadena_ != cadena.cadena_) return 0;
-  return 1;	
+  return 1;
 }
 
 
@@ -73,7 +73,7 @@ int Cadena::operator== (const Cadena& cadena) const
 int Cadena::operator< (const Cadena& cadena) const
 {
 	if (this-> cadena_ < cadena.cadena_) return 1;
-  return 0;	
+  return 0;
 }
 
 

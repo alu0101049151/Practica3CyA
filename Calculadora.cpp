@@ -50,14 +50,14 @@ int Calculadora::getCodigo () const
 
 
 
-void Calculadora::setCodigo (int codigo) 
+void Calculadora::setCodigo (int codigo)
 {
 	codigo_ = codigo;
 }
 
 
 
-void Calculadora::ejecutarCalculadora () 
+void Calculadora::ejecutarCalculadora ()
 {
 	std::ifstream input_file;
 	std::ofstream output_file;
@@ -66,64 +66,42 @@ void Calculadora::ejecutarCalculadora ()
 
 	if (!input_file.is_open())
 		std::cerr << "Ha habido un problema al abrir el fichero de entrada, por favor inténtelo de nuevo" << NEWLINE;
-	
+
 	else {
-		std::string leido1; //Almacenará la línea leida del fichero.
-		std::string leido2; //Almacenará la segunda linea leída (en caso de ser operaciones binarias
-	  output_file.open(salida_);
+		output_file.open(salida_);
+
+		std::string leido1;
+		std::string leido2;
 
 		while (!input_file.eof()) {
-					leido1.clear();
-					leido2.clear();
-					
-					std::getline(input_file, leido1);
-			if(!leido1.empty()) {
-						Lenguaje lenguaje1(leido1);
-					
-					std::cout << "leido 1: " << leido1 << "\n";
 
-					if (codigo_ < 7) {
-					    std::getline(input_file, leido2);
-					std::cout << "leido 2: " << leido2 << "\n";
-				   	if(!leido2.empty()){
-							Lenguaje lenguaje2(leido2);
+			std::getline(input_file, leido1);
 
-							switch (codigo_)
-							{
-								case 1:
-									{
-										Lenguaje resultado;
-										/*Concatenacion concatenacion(lenguaje1, lenguaje2);
-										resultado = concatenacion.concatenar();
-										resultado.write(output_file);*/
-										break;
-									}
+			//std::cout << "Leido1: " << leido1 << NEWLINE;
 
-								case 2:
-									{
-										Lenguaje resultado;
-										Union unionLenguaje(lenguaje1, lenguaje2);
-										resultado = unionLenguaje.unir();
-										resultado.writeLenguaje(output_file);
-										break;
-									}
-									//FALTAN EL RESTO DE CASOS
-							}
-						}
-					}
-			}
+			if (!leido1.empty()) {
+				Lenguaje lenguaje1(leido1);
 
-					else {
-						switch (codigo_)
-						{
-							case 7:
-								Lenguaje resultado;
-								/*Inversa inversa(lenguaje1);
-								resultado = inversa.invertir();*/
-						}
+				if (codigo_ < 7) { //Si es una operación binaria
+					std::getline(input_file, leido2);
+
+					//std::cout << "Leido2: " << leido2 << NEWLINE;
+					Lenguaje lenguaje2(leido2);
+
+					switch (codigo_) {
+						case 1:
+						   break;
+						case 2:
+						   Lenguaje resultado;
+							 Union unionLenguajes(lenguaje1, lenguaje2);
+							 resultado = unionLenguajes.unir();
+							 std::cout << "Resultado: " << NEWLINE;
+							 resultado.writeLenguaje(output_file);
+							 break;
 					}
 				}
+			}
+		}
 	}
 
 }
-

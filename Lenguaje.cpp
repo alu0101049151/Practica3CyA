@@ -44,9 +44,20 @@ Lenguaje::~Lenguaje (){}
 
 
 
-std::set<Cadena>	Lenguaje::getLenguaje () const 
+std::set<Cadena>	Lenguaje::getLenguaje () const
 {
 	return lenguaje_;
+}
+
+void Lenguaje::insertLenguaje(Cadena cadena)
+{
+	lenguaje_.insert(cadena);
+}
+
+
+void Lenguaje::clearLenguaje()
+{
+	lenguaje_.clear();
 }
 
 
@@ -77,7 +88,7 @@ void Lenguaje::fillLenguaje (std::string& lenguaje)
 //Limpia el token eliminando '}' '{' ',' y deja solo la palabra para crear el
 //objeto cadena a introducir en el lenguaje.
 //En caso de que sea el lenguaje vacío, se creará una cadena que contenga
-//solamente '{}' y será la única cadena del lenguaje. 
+//solamente '{}' y será la única cadena del lenguaje.
 std::string Lenguaje::tratamiento (std::string& token)
 {
 	//std::cout << "Ha entrado en tratamiento\n";
@@ -90,25 +101,25 @@ std::string Lenguaje::tratamiento (std::string& token)
 	//std::cout << "Ha pasado las instancias de las REGEX\n";
 
 	if (token == VACIO) {
-		std::cout << "Ha entrado en if (token == VACIO)\n";
+		//std::cout << "Ha entrado en if (token == VACIO)\n";
 		return token;
 	}
 
 	if (std::regex_match(token, corchete_principio) || std::regex_match(token, unitario)) {
 		to_return = token.substr(1, token.size()-2);
-		std::cout << "To_Reteurn principio: / unitario " << to_return << NEWLINE;
+		//std::cout << "To_Reteurn principio: / unitario " << to_return << NEWLINE;
 		return to_return;
 	}
 
 	if (std::regex_match(token, corchete_final)) {
 		to_return = token.substr(0, token.size()-1);
-		std::cout << "final: " << to_return << NEWLINE;
+		//std::cout << "final: " << to_return << NEWLINE;
 		return to_return;
 	}
 
 	if (std::regex_match(token, coma)) {
 		to_return = token.substr(0, token.size()-1);
-		std::cout << "To_Return coma: " << to_return << NEWLINE;
+		//std::cout << "To_Return coma: " << to_return << NEWLINE;
 		return to_return;
 	}
 
@@ -128,12 +139,16 @@ Lenguaje& Lenguaje::operator= (const Lenguaje& lenguaje)
 void Lenguaje::writeLenguaje(std::ostream& os) const
 {
 	std::set<Cadena>::iterator it = lenguaje_.begin();
-	
+	std::string aImprimir;
+	int i = 1;
 	os << "{";
 	for (; it != lenguaje_.end(); ++it) {
-		/*if (it == lenguaje_.end())
-			os << (*it) << "}" << NEWLINE;
-		else*/
-		  os << (*it) << ", ";
+		  os << (*it).getCadena();
+			if (i == lenguaje_.size())
+				os << "}" << NEWLINE;
+			else
+			  os << ", ";
+			i++;
 	}
+	std::cout << NEWLINE;
 }

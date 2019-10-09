@@ -49,22 +49,26 @@ class Lenguaje
 		Lenguaje (std::string& lenguaje);
 
 		Lenguaje (const Lenguaje& L);
-		
+
 		Lenguaje ();
 
 		~Lenguaje ();
 
 		std::set<Cadena>	getLenguaje () const;
-		
+
+		void insertLenguaje(Cadena cadena);
+
 		//SET_LENGUAJE(?????)
 	  Lenguaje& operator= (const Lenguaje& lenguaje);
 
 
  	   void writeLenguaje(std::ostream& os) const;
-	
+
+		 void clearLenguaje();
+
 	protected:
 	   //Extrae las cadenas del string leído y las inserta en el set de cadenas
-	   //(lenguaje) 
+	   //(lenguaje)
 	   void fillLenguaje (std::string& lenguaje);
 
 
@@ -73,7 +77,7 @@ class Lenguaje
 	   //En caso de que sea el lenguaje vacío, se creará una cadena que contenga
 	   //solamente '{}' y será la única cadena del lenguaje.
 	   std::string tratamiento (std::string& token);
-		
+
 	private:
 		  std::set<Cadena> lenguaje_;
 

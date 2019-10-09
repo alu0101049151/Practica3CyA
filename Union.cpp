@@ -23,7 +23,7 @@
 
 #include "Union.h"
 
-Union::Union(Lenguaje& lenguaje1, Lenguaje& lenguaje2):
+Union::Union(Lenguaje lenguaje1, Lenguaje lenguaje2):
 	lenguaje1_(lenguaje1),
 	lenguaje2_(lenguaje2){}
 
@@ -31,18 +31,11 @@ Union::~Union(){}
 
 Lenguaje Union::unir ()
 {
-	Lenguaje resultado; 
+	Lenguaje resultado;
 	resultado = lenguaje1_;
-	std::set<Cadena>::iterator it = resultado.getLenguaje().begin();
-	
-	if (resultado.getLenguaje().empty())
-		std::cout << "El resultado está vacío\n";
-	if (lenguaje1_.getLenguaje().empty())
-		std::cout << "El lenguaje1_ está vacío\n";
-	if (lenguaje2_.getLenguaje().empty())
-		std::cout << "El lenguaje2_ está vacío\n";
 
-	std::cout << "Principio del resultdao: " << lenguaje2_.getLenguaje().begin()->getCadena() << "\n";
-	//resultado.getLenguaje().insert(lenguaje2_.getLenguaje().begin(), lenguaje2_.getLenguaje().end());
+	for (auto i: lenguaje2_.getLenguaje()) {
+	    resultado.insertLenguaje(i);
+		}
 	return resultado;
 }

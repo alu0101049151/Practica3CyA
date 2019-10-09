@@ -24,19 +24,21 @@
 #ifndef PRACTICA3_UNION_H
 #define PRACTICA3_UNION_H
 
+#include <iterator>
+
 #include "Lenguaje.h"
 
 class Union
 {
 	public:
 
-		Union(Lenguaje& lenguaje1, Lenguaje& lenguaje2);
+		Union(Lenguaje lenguaje1, Lenguaje lenguaje2);
 
 		~Union();
 
 		//Realiza la union de los lenguajes.
 		Lenguaje unir();
-		
+
 	private:
 		Lenguaje lenguaje1_;
 		Lenguaje lenguaje2_;
