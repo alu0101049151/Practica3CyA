@@ -177,7 +177,10 @@ void Calculadora::ejecutarCalculadora ()
 						case 10: //Cierre Kleene
 						{
 							Lenguaje resultado;
-							
+							Kleene kleeneLenguaje(lenguaje1);
+							resultado = kleeneLenguaje.cierreKleene();
+							resultado.writeLenguajeInfinito(output_file);
+							break;
 						}
 					}
 				}

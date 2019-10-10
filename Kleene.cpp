@@ -21,22 +21,22 @@
   *                   6/10/2019 - Creación (primera versión) del código
   * */
 
-#ifndef PRACTICA3_KLEENE_H
-#define PRACTICA3_KLEENE_H
+#include "Kleene.h"
 
-#include "Lenguaje.h"
-#include "Positivo.h"
+Kleene::Kleene (Lenguaje lenguaje):
+  lenguaje_(lenguaje){}
 
-class Kleene
+Kleene::~Kleene (){}
+
+//Realiza el cierre de Kleene del lenguaje_
+Lenguaje Kleene::cierreKleene ()
 {
-public:
-  Kleene (Lenguaje lenguaje);
-  ~Kleene ();
+  Lenguaje resultado;
+  Positivo positivo(lenguaje_);
 
-  //Realiza el cierre de Kleene del lenguaje_
-  Lenguaje cierreKleene ();
-
-private:
-  Lenguaje lenguaje_;
-};
-#endif //PRACTICA3_KLEENE_H
+  std::string vacia = SIGMA;
+  Cadena sigma(vacia);
+  resultado = positivo.cierrePositivo();
+  resultado.insertLenguaje(sigma);
+  return resultado;
+}

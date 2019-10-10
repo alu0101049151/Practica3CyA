@@ -40,6 +40,7 @@
 #include "Inversa.h"
 #include "Potencia.h"
 #include "Positivo.h"
+#include "Kleene.h"
 
 
 class Calculadora
