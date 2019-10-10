@@ -1,0 +1,5 @@
+{a, b, aa, ab, bb, ba}
+{a, b, ac, ab, bb, ba}
+{a, bb, c}
+{a, bb, c}
+{a, cd, d}

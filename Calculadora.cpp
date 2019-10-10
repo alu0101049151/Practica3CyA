@@ -136,7 +136,50 @@ void Calculadora::ejecutarCalculadora ()
 							 else
 							   output_file << "FALSE" << NEWLINE;
 						 }
+						 case 6: //Igualdad
+						 {
+							 Igualdad igualdadLenguajes(leido1, leido2);
+							 if (igualdadLenguajes.iguales ())
+							   output_file << "TRUE" << NEWLINE;
+						   else
+							   output_file << "FALSE" << NEWLINE;
+						 }
 					 }
+				}
+				else  {
+
+					switch (codigo_) {
+						case 7: //Inversa
+						{
+							Lenguaje resultado;
+							Inversa inversaLenguaje(lenguaje1);
+							resultado = inversaLenguaje.invertir();
+							std::cout << "Inversa: \n";
+							resultado.writeLenguaje(output_file);
+							break;
+						}
+						case 8: //Potencia
+						{
+							Lenguaje resultado;
+							Potencia potenciaLenguaje(lenguaje1, exponente_);
+							resultado = potenciaLenguaje.elevar();
+							resultado.writeLenguaje(output_file);
+							break;
+						}
+						case 9: //Cierre positivo
+						{
+							Lenguaje resultado;
+							Positivo positivoLenguaje(lenguaje1);
+							resultado = positivoLenguaje.cierrePositivo();
+							resultado.writeLenguajeInfinito(output_file);
+							break;
+						}
+						case 10: //Cierre Kleene
+						{
+							Lenguaje resultado;
+							
+						}
+					}
 				}
 			}
 		}

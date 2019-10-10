@@ -35,9 +35,11 @@
 			//Realiza la concatenación de lenguaje1_ con lenguaje2_
 			Lenguaje concatenar();
 
+      void setConcatenacion(Lenguaje lenguaje1, Lenguaje lenguaje2);
+
 		private:
 			Lenguaje lenguaje1_;
 			Lenguaje lenguaje2_;
 	};
-  
+
   #endif //PRACTICA3_CONCATENACION_H

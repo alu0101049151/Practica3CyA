@@ -50,7 +50,18 @@ void Cadena::setCadena (std::string cadena)
 	cadena_ = cadena;
 }
 
+//===============================================
 
+Cadena Cadena::invertirCadena()
+{
+	std::string inversa = cadena_;
+
+	for (int i = 0; i < getCadena().size()/2; ++i) {
+		std::swap(inversa[i], inversa[getCadena().size()-i-1]);
+	}
+	Cadena invertida(inversa);
+	return invertida;
+}
 
 //=========SOBRECARGA DE OPERADORES=============
 

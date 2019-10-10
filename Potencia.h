@@ -8,8 +8,8 @@
   * Autor: Basilio Gómez Navarro
   * Correo: alu0101049151@ull.edu.es
   * Fecha 6/10/2019
-  * Archivo Sublenguaje.h: Clase Sublenguaje. Representa la operación para comprobar
-  *                         si lenguaje1_ es sublenguaje de lenguaje2_.
+  * Archivo Potencia.h: Clase Potencia. Representa la operación potencia para un
+  *                         lenguaje formal.
   *                         En este fichero se encuentra la definición de la clase.
   *
   * Referencias:
@@ -21,24 +21,27 @@
   *                   6/10/2019 - Creación (primera versión) del código
   * */
 
-#ifndef PRACTICA3_SUBLENGUAJE_H
-#define PRACTICA3_SUBLENGUAJE_H
+#ifndef PRACTICA3_POTENCIA_H
+#define PRACTICA3_POTENCIA_H
 
 #include "Lenguaje.h"
+#include "Concatenacion.h"
 
-
-class Sublenguaje
+class Potencia
 {
-	public:
-		Sublenguaje (Lenguaje lenguaje1, Lenguaje lenguaje2);
-		~Sublenguaje ();
+public:
+  Potencia (Lenguaje lenguaje, int exponente);
+  ~Potencia ();
 
-    //Devuelve true si lenguaje1_ es sublenguaje de lenguaje2_
-		bool sublenguajes ();
+  int geteExponente() const;
 
-	private:
-		Lenguaje lenguaje1_;
-		Lenguaje lenguaje2_;
+  //Devuelvela Potencia de lenguaje1_
+  Lenguaje elevar ();
+
+private:
+  Lenguaje lenguaje_;
+  int exponente_;
+
 };
 
-#endif //PRACTICA3_SUBLENGUAJE_H
+#endif //PRACTICA3_POTENCIA_H

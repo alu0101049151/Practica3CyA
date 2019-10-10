@@ -151,3 +151,20 @@ void Lenguaje::writeLenguaje(std::ostream& os) const
 	}
 	std::cout << NEWLINE;
 }
+
+void Lenguaje::writeLenguajeInfinito(std::ostream& os) const
+{
+	std::set<Cadena>::iterator it = lenguaje_.begin();
+	std::string aImprimir;
+	int i = 1;
+	os << "{";
+	for (; it != lenguaje_.end(); ++it) {
+		  os << (*it).getCadena();
+			if (i == lenguaje_.size())
+				os << ",...}" << NEWLINE;
+			else
+			  os << ", ";
+			i++;
+	}
+	std::cout << NEWLINE;
+}

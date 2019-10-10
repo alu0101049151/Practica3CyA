@@ -8,8 +8,8 @@
   * Autor: Basilio Gómez Navarro
   * Correo: alu0101049151@ull.edu.es
   * Fecha 6/10/2019
-  * Archivo Sublenguaje.h: Clase Sublenguaje. Representa la operación para comprobar
-  *                         si lenguaje1_ es sublenguaje de lenguaje2_.
+  * Archivo Positivo.h: Clase Positivo. Representa la operación cierre Positivo para un
+  *                         lenguaje formal.
   *                         En este fichero se encuentra la definición de la clase.
   *
   * Referencias:
@@ -21,24 +21,5 @@
   *                   6/10/2019 - Creación (primera versión) del código
   * */
 
-#ifndef PRACTICA3_SUBLENGUAJE_H
-#define PRACTICA3_SUBLENGUAJE_H
-
-#include "Lenguaje.h"
-
-
-class Sublenguaje
-{
-	public:
-		Sublenguaje (Lenguaje lenguaje1, Lenguaje lenguaje2);
-		~Sublenguaje ();
-
-    //Devuelve true si lenguaje1_ es sublenguaje de lenguaje2_
-		bool sublenguajes ();
-
-	private:
-		Lenguaje lenguaje1_;
-		Lenguaje lenguaje2_;
-};
-
-#endif //PRACTICA3_SUBLENGUAJE_H
+#ifndef PRACTICA3_POSITIVO_H
+#define PRACTICA3_POSITIVO_H

@@ -8,9 +8,9 @@
   * Autor: Basilio Gómez Navarro
   * Correo: alu0101049151@ull.edu.es
   * Fecha 6/10/2019
-  * Archivo Sublenguaje.h: Clase Sublenguaje. Representa la operación para comprobar
-  *                         si lenguaje1_ es sublenguaje de lenguaje2_.
-  *                         En este fichero se encuentra la definición de la clase.
+  * Archivo Inversa.h: Clase Inversa. Representa la operación inversa para un
+  *                         lenguaje formal.
+  *                         En este fichero se encuentra la implementación de la clase.
   *
   * Referencias:
   *                   Enunciado de la prácita:
@@ -21,24 +21,21 @@
   *                   6/10/2019 - Creación (primera versión) del código
   * */
 
-#ifndef PRACTICA3_SUBLENGUAJE_H
-#define PRACTICA3_SUBLENGUAJE_H
-
-#include "Lenguaje.h"
+#include "Inversa.h"
 
 
-class Sublenguaje
+Inversa::Inversa (Lenguaje lenguaje):
+  lenguaje_(lenguaje){}
+
+Inversa::~Inversa (){}
+
+//Devuelvela inversa de lenguaje1_
+Lenguaje Inversa::invertir ()
 {
-	public:
-		Sublenguaje (Lenguaje lenguaje1, Lenguaje lenguaje2);
-		~Sublenguaje ();
+  Lenguaje resultado; //Contendrá la inversa de lenguaje_
+  for (auto i: lenguaje_.getLenguaje()) {
+    resultado.insertLenguaje(i.invertirCadena());
+  }
 
-    //Devuelve true si lenguaje1_ es sublenguaje de lenguaje2_
-		bool sublenguajes ();
-
-	private:
-		Lenguaje lenguaje1_;
-		Lenguaje lenguaje2_;
-};
-
-#endif //PRACTICA3_SUBLENGUAJE_H
+  return resultado;
+}

@@ -8,8 +8,8 @@
   * Autor: Basilio Gómez Navarro
   * Correo: alu0101049151@ull.edu.es
   * Fecha 6/10/2019
-  * Archivo Sublenguaje.h: Clase Sublenguaje. Representa la operación para comprobar
-  *                         si lenguaje1_ es sublenguaje de lenguaje2_.
+  * Archivo Inversa.h: Clase Inversa. Representa la operación inversa para un
+	*                         lenguaje formal.
   *                         En este fichero se encuentra la definición de la clase.
   *
   * Referencias:
@@ -21,24 +21,22 @@
   *                   6/10/2019 - Creación (primera versión) del código
   * */
 
-#ifndef PRACTICA3_SUBLENGUAJE_H
-#define PRACTICA3_SUBLENGUAJE_H
+#ifndef PRACTICA3_INVERSA_H
+#define PRACTICA3_INVERSA_H
 
 #include "Lenguaje.h"
 
-
-class Sublenguaje
+class Inversa
 {
-	public:
-		Sublenguaje (Lenguaje lenguaje1, Lenguaje lenguaje2);
-		~Sublenguaje ();
+public:
+  Inversa (Lenguaje lenguaje);
+  ~Inversa ();
 
-    //Devuelve true si lenguaje1_ es sublenguaje de lenguaje2_
-		bool sublenguajes ();
+  //Devuelvela inversa de lenguaje1_
+  Lenguaje invertir ();
 
-	private:
-		Lenguaje lenguaje1_;
-		Lenguaje lenguaje2_;
+private:
+  Lenguaje lenguaje_;
 };
 
-#endif //PRACTICA3_SUBLENGUAJE_H
+#endif //PRACTICA3_INVERSA_H

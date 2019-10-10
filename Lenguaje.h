@@ -37,6 +37,7 @@ const std::string CORCHETE1 = "{";
 const std::string CORCHETE2 = "}";
 const std::string ESPACIO = " ";
 const std::string COMA = ",";
+const std::string SIGMA = "&";
 const std::string VACIO = "{}";
 
 
@@ -63,6 +64,8 @@ class Lenguaje
 
 
  	   void writeLenguaje(std::ostream& os) const;
+
+		 void writeLenguajeInfinito(std::ostream& os) const;
 
 		 void clearLenguaje();
 

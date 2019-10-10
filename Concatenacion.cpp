@@ -30,11 +30,19 @@ Concatenacion::Concatenacion (Lenguaje lenguaje1, Lenguaje lenguaje2):
 
 Concatenacion::~Concatenacion (){}
 
+void Concatenacion::setConcatenacion(Lenguaje lenguaje1, Lenguaje lenguaje2)
+{
+	lenguaje1_ = lenguaje1;
+	lenguaje2_ = lenguaje2;
+}
+
+
 Lenguaje Concatenacion::concatenar ()
 {
 	Lenguaje resultado;
 	std::string nueva_cadena;
 
+	std::cout << "Ha entrado en concatenar\n";
 	for (auto i: lenguaje1_.getLenguaje()) {
 		for (auto j: lenguaje2_.getLenguaje()) {
 			nueva_cadena.append(i.getCadena());
@@ -44,5 +52,7 @@ Lenguaje Concatenacion::concatenar ()
 			nueva_cadena.clear();
 		}
 	}
+	std::cout << "Resulado concatenar: \n";
+	resultado.writeLenguaje(std::cout);
 	return resultado;
 }

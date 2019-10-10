@@ -38,7 +38,7 @@ int main (int argc, char const* argv[])
 		std::string codigostr = argv[3];
 		int codigo = std::stoi( codigostr );
 
-		if (argc < 4) {
+		if (argv[4] != NULL) {
 			std::string exponentestr = argv[4];
 			int exponente = std::stoi( exponentestr );
 			Calculadora calculadora(entrada, salida, codigo, exponente);
@@ -48,7 +48,7 @@ int main (int argc, char const* argv[])
 			Calculadora calculadora(entrada, salida, codigo);
 			calculadora.ejecutarCalculadora();
 		}
-		
+
 		return 0;
 	}
 }

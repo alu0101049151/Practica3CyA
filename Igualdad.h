@@ -8,8 +8,8 @@
   * Autor: Basilio Gómez Navarro
   * Correo: alu0101049151@ull.edu.es
   * Fecha 6/10/2019
-  * Archivo Sublenguaje.h: Clase Sublenguaje. Representa la operación para comprobar
-  *                         si lenguaje1_ es sublenguaje de lenguaje2_.
+  * Archivo Igualdad.h: Clase Igualdad. Representa la operación para comprobar
+  *                         si lenguaje1_ es igual que lenguaje2_.
   *                         En este fichero se encuentra la definición de la clase.
   *
   * Referencias:
@@ -21,24 +21,24 @@
   *                   6/10/2019 - Creación (primera versión) del código
   * */
 
-#ifndef PRACTICA3_SUBLENGUAJE_H
-#define PRACTICA3_SUBLENGUAJE_H
+#ifndef PRACTICA3_IGUALDAD_H
+#define PRACTICA3_IGUALDAD_H
 
 #include "Lenguaje.h"
 
-
-class Sublenguaje
+class Igualdad
 {
-	public:
-		Sublenguaje (Lenguaje lenguaje1, Lenguaje lenguaje2);
-		~Sublenguaje ();
+public:
+  Igualdad (std::string& lenguaje1, std::string& lenguaje2);
+  ~Igualdad ();
 
-    //Devuelve true si lenguaje1_ es sublenguaje de lenguaje2_
-		bool sublenguajes ();
+  //Devuelve true si lenguaje1_ es igual a lenguaje2_
+  bool iguales ();
 
-	private:
-		Lenguaje lenguaje1_;
-		Lenguaje lenguaje2_;
+private:
+  std::string lenguaje1_;
+  std::string lenguaje2_;
+
 };
 
-#endif //PRACTICA3_SUBLENGUAJE_H
+#endif //PRACTICA3_IGUALDAD_H

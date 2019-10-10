@@ -36,6 +36,12 @@
 #include "Interseccion.h"
 #include "Diferencia.h"
 #include "Sublenguaje.h"
+#include "Igualdad.h"
+#include "Inversa.h"
+#include "Potencia.h"
+#include "Positivo.h"
+
+
 class Calculadora
 {
 	public:
