@@ -1,0 +1,2 @@
+{ojos, azules, negros, blancos}
+{ojos, azules, negros}

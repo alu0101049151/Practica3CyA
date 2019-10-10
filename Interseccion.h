@@ -8,9 +8,10 @@
   * Autor: Basilio Gómez Navarro
   * Correo: alu0101049151@ull.edu.es
   * Fecha 6/10/2019
-  * Archivo Calculadora.h: Clase Union. Representa la operación 'unión' entre
-	*                        dos lenguajes.
-	*
+  * Archivo Concatenacion.h: Clase Interseccion. Representa la operación 'intersección'
+  *                          entre dos lenguajes. En este fichero se encuentra
+	*                          la definición de la clase.
+  *
   * Referencias:
   *                   Enunciado de la prácita:
   *                   https://campusvirtual.ull.es/1920/pluginfile.php/159482/mod_assign/introattachment/0/
@@ -20,26 +21,24 @@
   *                   6/10/2019 - Creación (primera versión) del código
   * */
 
+#ifndef PRACTICA3_INTERSECCION_H
+#define PRACTICA3_INTERSECCION_H
 
-#ifndef PRACTICA3_UNION_H
-#define PRACTICA3_UNION_H
 
 #include "Lenguaje.h"
 
-class Union
+class Interseccion
 {
 	public:
+		Interseccion (Lenguaje lenguaje1, Lenguaje lenguaje2);
+		~Interseccion ();
 
-		Union(Lenguaje lenguaje1, Lenguaje lenguaje2);
-		~Union();
-
-		//Realiza la union de los lenguajes.
-		Lenguaje unir();
+		//Lleva a cabo la intersección entre el lenguaje1_ y el lenguaje2_
+		Lenguaje intersecar();
 
 	private:
 		Lenguaje lenguaje1_;
 		Lenguaje lenguaje2_;
 };
 
-
-#endif //PRACTICA3_UNION_H
+#endif //PRACTICA3_INTERSECCON_H

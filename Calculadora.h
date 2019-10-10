@@ -32,7 +32,10 @@
 
 #include "Lenguaje.h"
 #include "Union.h"
-
+#include "Concatenacion.h"
+#include "Interseccion.h"
+#include "Diferencia.h"
+#include "Sublenguaje.h"
 class Calculadora
 {
 	public:
@@ -41,12 +44,12 @@ class Calculadora
 		//Constructor que contiene el valor del exponente en caso de que se quiera
 		//llevar a cabo la operación de potencia.
 		Calculadora (std::string& entrada, std::string& salida, int codigo, int exponente);
-		
+
 		~Calculadora ();
 
-		
+
 		int getCodigo () const;
-		
+
 		void setCodigo (int codigo);
 
 //	protected:

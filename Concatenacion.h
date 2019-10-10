@@ -8,9 +8,10 @@
   * Autor: Basilio Gómez Navarro
   * Correo: alu0101049151@ull.edu.es
   * Fecha 6/10/2019
-  * Archivo Calculadora.h: Clase Union. Representa la operación 'unión' entre
-	*                        dos lenguajes.
-	*
+  * Archivo Concatenacion.h: Clase Concatecacion. Representa la operación 'concatenación'
+	*                          entre dos lenguajes (se concatena el primer
+	*                          lenguaje con el segundo).
+  *
   * Referencias:
   *                   Enunciado de la prácita:
   *                   https://campusvirtual.ull.es/1920/pluginfile.php/159482/mod_assign/introattachment/0/
@@ -20,26 +21,23 @@
   *                   6/10/2019 - Creación (primera versión) del código
   * */
 
+  #ifndef PRACTICA3_CONCATENACION_H
+  #define PRACTICA3_CONCATENACION_H
 
-#ifndef PRACTICA3_UNION_H
-#define PRACTICA3_UNION_H
+  #include "Lenguaje.h"
 
-#include "Lenguaje.h"
+  class Concatenacion
+  {
+		public:
+			Concatenacion (Lenguaje lenguaje1, Lenguaje lenguaje2);
+			~Concatenacion ();
 
-class Union
-{
-	public:
+			//Realiza la concatenación de lenguaje1_ con lenguaje2_
+			Lenguaje concatenar();
 
-		Union(Lenguaje lenguaje1, Lenguaje lenguaje2);
-		~Union();
-
-		//Realiza la union de los lenguajes.
-		Lenguaje unir();
-
-	private:
-		Lenguaje lenguaje1_;
-		Lenguaje lenguaje2_;
-};
-
-
-#endif //PRACTICA3_UNION_H
+		private:
+			Lenguaje lenguaje1_;
+			Lenguaje lenguaje2_;
+	};
+  
+  #endif //PRACTICA3_CONCATENACION_H

@@ -77,10 +77,13 @@ void Calculadora::ejecutarCalculadora ()
 
 			std::getline(input_file, leido1);
 
-			//std::cout << "Leido1: " << leido1 << NEWLINE;
+			std::cout << "Leido1: " << leido1 << NEWLINE;
 
 			if (!leido1.empty()) {
 				Lenguaje lenguaje1(leido1);
+
+				std::cout << "Lenguaje 1: \n";
+				lenguaje1.writeLenguaje(std::cout);
 
 				if (codigo_ < 7) { //Si es una operación binaria
 					std::getline(input_file, leido2);
@@ -89,16 +92,51 @@ void Calculadora::ejecutarCalculadora ()
 					Lenguaje lenguaje2(leido2);
 
 					switch (codigo_) {
-						case 1:
+						case 1: //Concatenación
+						{
+						   Lenguaje resultado;
+							 Concatenacion concatenacionLenguajes(lenguaje1, lenguaje2);
+							 resultado = concatenacionLenguajes.concatenar();
+							 std::cout << "Concatenacion: " << NEWLINE;
+							 resultado.writeLenguaje(output_file);
 						   break;
-						case 2:
+						 }
+						case 2: //Unión
+						{
 						   Lenguaje resultado;
 							 Union unionLenguajes(lenguaje1, lenguaje2);
 							 resultado = unionLenguajes.unir();
 							 std::cout << "Resultado: " << NEWLINE;
 							 resultado.writeLenguaje(output_file);
 							 break;
-					}
+						 }
+						 case 3: //Intersección
+						 {
+							 Lenguaje resultado;
+							 Interseccion interseccionLenguajes(lenguaje1, lenguaje2);
+							 resultado = interseccionLenguajes.intersecar();
+							 std::cout << "Intersección: \n";
+							 resultado.writeLenguaje(output_file);
+							 break;
+						 }
+						 case 4: //Diferencia
+						 {
+							 Lenguaje resultado;
+							 Diferencia diferenciaLenguajes(lenguaje1, lenguaje2);
+							 resultado = diferenciaLenguajes.diferenciar();
+							 std::cout << "Direferencia: \n";
+							 resultado.writeLenguaje(output_file);
+							 break;
+						 }
+						 case 5: //Sublenguajes
+						 {
+							 Sublenguaje sublenguajesLenguaje(lenguaje1, lenguaje2);
+							 if (sublenguajesLenguaje.sublenguajes ())
+							   output_file << "TRUE" << NEWLINE;
+							 else
+							   output_file << "FALSE" << NEWLINE;
+						 }
+					 }
 				}
 			}
 		}

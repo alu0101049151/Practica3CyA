@@ -8,9 +8,10 @@
   * Autor: Basilio Gómez Navarro
   * Correo: alu0101049151@ull.edu.es
   * Fecha 6/10/2019
-  * Archivo Calculadora.h: Clase Union. Representa la operación 'unión' entre
-	*                        dos lenguajes.
-	*
+  * Archivo Concatenacion.h: Clase Diferencia. Representa la operación 'diferencia'
+  *                          entre el lenguaje1_ y el lenguaje2_. En este fichero se encuentra
+  *                          la definición de la clase.
+  *
   * Referencias:
   *                   Enunciado de la prácita:
   *                   https://campusvirtual.ull.es/1920/pluginfile.php/159482/mod_assign/introattachment/0/
@@ -20,26 +21,24 @@
   *                   6/10/2019 - Creación (primera versión) del código
   * */
 
-
-#ifndef PRACTICA3_UNION_H
-#define PRACTICA3_UNION_H
+#ifndef PRACTICA3_DIFERENCIA_H
+#define PRACTICA3_DIFERENCIA_H
 
 #include "Lenguaje.h"
 
-class Union
+class Diferencia
 {
-	public:
+public:
+  Diferencia (Lenguaje lenguaje1, Lenguaje lenguaje2);
+  ~Diferencia ();
 
-		Union(Lenguaje lenguaje1, Lenguaje lenguaje2);
-		~Union();
+  //Devuelve la diferencia entre el lenguaje1_ y el lenguaje2_ en nuevo lenguaje.
+  Lenguaje diferenciar();
 
-		//Realiza la union de los lenguajes.
-		Lenguaje unir();
-
-	private:
-		Lenguaje lenguaje1_;
-		Lenguaje lenguaje2_;
+private:
+  Lenguaje lenguaje1_;
+  Lenguaje lenguaje2_;
 };
 
 
-#endif //PRACTICA3_UNION_H
+#endif //PRACTICA3_DIFERENCIA_H

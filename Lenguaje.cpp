@@ -72,7 +72,7 @@ void Lenguaje::fillLenguaje (std::string& lenguaje)
 
 	for (int i = 0; i < lenguaje.size(); ++i) {
 		iss >> token;
-		//std::cout << "Token de fillLenguaje " << token << "\n";
+		std::cout << "Token de fillLenguaje " << token << "\n";
 		if (!token.empty()) {
 			to_cadena = tratamiento(token);
 	//std::cout << "Ha pasado tratamiento\n";
@@ -96,7 +96,7 @@ std::string Lenguaje::tratamiento (std::string& token)
 	std::regex corchete_principio("[{](\\w)+,");
 	std::regex corchete_final("(\\w)+}");
 	std::regex coma("(\\w)+,");
-	std::regex unitario("[{][\\W \\w][}]");
+	std::regex unitario("[{][\\W\\w]+[}]");
 	std::string to_return = "&";
 	//std::cout << "Ha pasado las instancias de las REGEX\n";
 
@@ -107,7 +107,7 @@ std::string Lenguaje::tratamiento (std::string& token)
 
 	if (std::regex_match(token, corchete_principio) || std::regex_match(token, unitario)) {
 		to_return = token.substr(1, token.size()-2);
-		//std::cout << "To_Reteurn principio: / unitario " << to_return << NEWLINE;
+		std::cout << "To_Reteurn principio: / unitario " << to_return << NEWLINE;
 		return to_return;
 	}
 
@@ -133,7 +133,6 @@ Lenguaje& Lenguaje::operator= (const Lenguaje& lenguaje)
 	this->lenguaje_ = lenguaje.lenguaje_;
 	return *this;
 }
-
 
 
 void Lenguaje::writeLenguaje(std::ostream& os) const

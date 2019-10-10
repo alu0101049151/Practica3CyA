@@ -8,9 +8,10 @@
   * Autor: Basilio Gómez Navarro
   * Correo: alu0101049151@ull.edu.es
   * Fecha 6/10/2019
-  * Archivo Calculadora.h: Clase Union. Representa la operación 'unión' entre
-	*                        dos lenguajes.
-	*
+  * Archivo Sublenguajes.h: Clase Sublenguaje. Representa la operación para comprobar
+  *                         si lenguaje1_ es sublenguaje de lenguaje2_.
+  *                         En este fichero se encuentra la definición de la clase.
+  *
   * Referencias:
   *                   Enunciado de la prácita:
   *                   https://campusvirtual.ull.es/1920/pluginfile.php/159482/mod_assign/introattachment/0/
@@ -20,26 +21,24 @@
   *                   6/10/2019 - Creación (primera versión) del código
   * */
 
-
-#ifndef PRACTICA3_UNION_H
-#define PRACTICA3_UNION_H
+#ifndef PRACTICA3_SUBLENGUAJE_H
+#define PRACTICA3_SUBLENGUAJE_H
 
 #include "Lenguaje.h"
 
-class Union
+
+class Sublenguaje
 {
 	public:
+		Sublenguaje (Lenguaje lenguaje1, Lenguaje lenguaje2);
+		~Sublenguaje ();
 
-		Union(Lenguaje lenguaje1, Lenguaje lenguaje2);
-		~Union();
-
-		//Realiza la union de los lenguajes.
-		Lenguaje unir();
+    //Devuelve true lenguaje1_ es sublenguaje de lenguaje2_
+		bool sublenguajes ();
 
 	private:
 		Lenguaje lenguaje1_;
 		Lenguaje lenguaje2_;
 };
 
-
-#endif //PRACTICA3_UNION_H
+#endif //PRACTICA3_SUBLENGUAJE_H
